@@ -1,0 +1,27 @@
+body{
+    margin: 0;
+    background-color: bisque;
+}
+
+.top{
+    margin: 0;
+    height: 20%;
+    background-color: #222222;
+}
+
+.graphBack{
+    display: block;
+    margin: 2% 10% 2% 10%;
+    background-color: gray;
+    width: fit-content;
+    height: fit-content;
+    /*width: 80%;*/
+    /*height: 80%;*/
+}
+
+.centre {
+    margin: 0;
+    padding: 2% 0 0 0;
+    font-size: xxx-large;
+    text-align: center;
+}
