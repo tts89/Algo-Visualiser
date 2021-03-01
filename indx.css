@@ -11,6 +11,8 @@ body{
 
 .graphBack{
     display: block;
+    /*margin-left: auto;*/
+    /*margin-right: auto;*/
     margin: 2% 10% 2% 10%;
     background-color: gray;
     width: fit-content;
