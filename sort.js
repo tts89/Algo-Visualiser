@@ -7,6 +7,7 @@ const maxEle= 100;
 const elementHeight= 4;
 const extraHeight= height- maxEle*elementHeight;
 var arr=[len];
+var swapDuration= 50;
 
 draw();
 // genArray();
@@ -44,21 +45,37 @@ function swap(x,y) {
 }
 
 function bubble() {
-    for(let i=0;i<len;i++) {
-        for(let j=0;j<len-i-1;j++) {
-            setTimeout(function () {
-                ctx.fillStyle="aqua";
-                fillArrValue(j,arr[j]);
-                fillArrValue(j+1,arr[j+1]);
-                // setTimeout(function (){},1000);
-                if(arr[j]>arr[j+1]) swap(j,j+1);
-                ctx.fillStyle="purple";
-                fillArrValue(j,arr[j]);
-                fillArrValue(j+1,arr[j+1]);
-            },100);
-            // clearTimeout(t);
+    let i=0;
+    function firstLoop() {
+        if(i===len) return;
+        setTimeout(firstLoop,(len-i)*swapDuration);
+        let j=0;
+        function secondLoop() {
+            setTimeout(secondLoop,swapDuration);
+            if(j===len-i-1)  return;
+            ctx.fillStyle="aqua";
+            fillArrValue(j,arr[j]);
+            fillArrValue(j+1,arr[j+1]);
+            if(arr[j]>arr[j+1]) {
+                // setTimeout(function () {
+                    swap(j,j+1);
+                //     ctx.fillStyle="purple";
+                //     fillArrValue(j,arr[j]);
+                //     fillArrValue(j+1,arr[j+1]);
+                // },swapDuration/2);
+            }//else{
+                // setTimeout(function () {
+                    ctx.fillStyle="purple";
+                    fillArrValue(j,arr[j]);
+                    fillArrValue(j+1,arr[j+1]);
+                // },swapDuration/2);
+            // }
+            j++;
         }
+        secondLoop();
+        i++;
     }
+    firstLoop();
 }
 
 var genButton= document.querySelector("button");
